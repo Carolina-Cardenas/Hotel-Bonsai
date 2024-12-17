@@ -12,6 +12,7 @@ html {
   box-sizing: border-box;
   scroll-behavior: smooth;
   overflow-x: hidden;
+  background-image: url('/src/assets/08-night.avif');
 }
 
 h1,

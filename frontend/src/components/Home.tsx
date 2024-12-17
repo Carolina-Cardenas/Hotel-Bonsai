@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../Home.css";
+import "./Home.css";
 
 const Home: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -15,7 +15,7 @@ const Home: React.FC = () => {
           <a href="/home" className="header__logo-link">
             <figure className="header__logo">
               <img
-                src="/frontend/src/assets/logo/bonz.ai-logo-white-portrait-full.png"
+                src="/src/assets/logo/bonz.ai-logo-white-portrait-full.png"
                 alt="Bonz.ai Logo"
               />
             </figure>
