@@ -1,27 +1,34 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
+/* body {
+    margin: 0;
+}
 
 body.home-page {
-    background-image: url('/frontend/src/assets/08-night.avif');
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-}
+} */
 
 /* HOME */
 .home {
     width: 100%;
-    height: 100vh;
+}
 
+main {
+    /* height: 100vh; */
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    background-image: url('/src/assets/08-night.avif');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .home__content {
+    position: relative;
     display: flex;
-    align-items: start;
-    height: 100%;
-    margin-top: 15rem;
+    align-items: center;
+    background-repeat: no-repeat;
+    justify-content: space-between;
 
 }
 
@@ -35,8 +42,10 @@ body.home-page {
 }
 
 .home__btn {
-    position: absolute;
-    margin-top: 250px;
+    position: relative;
+    margin-top: 40rem;
+    justify-content: center;
+    align-items: center;
     bottom: 6rem;
     right: 6rem;
     background-color: #C9A227;
@@ -54,71 +63,4 @@ body.home-page {
 
 .home__btn:hover {
     background-color: #e76f51;
-}
-
-/* Footer Container */
-.footer {
-    width: 100%;
-    background: linear-gradient(to right, #010303, #22443c);
-    color: #ffffff;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-.footer-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    gap: 0;
-    position: relative;
-    margin: 0 auto;
-}
-
-.footer-grid__item {
-    padding: 0;
-    margin: 1rem;
-}
-
-.footer-grid__contact h4,
-.footer-grid__social h4 {
-    margin-bottom: 20px;
-    font-size: 1.2rem;
-}
-
-.footer-grid__contact a {
-    color: #e2e4e7;
-    text-decoration: none;
-    line-height: 1.6
-}
-
-.footer-grid__contact a:hover {
-    color: #007BFF;
-    text-decoration: underline;
-}
-
-.footer-grid__contact a:hover {
-    text-decoration: underline;
-}
-
-/* Social Icons */
-.footer-grid__social ul {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-    padding: 0;
-}
-
-.footer-grid__social img {
-    width: 24px;
-    height: 24px;
-}
-
-.footer-grid::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    width: 1px;
-    transform: translateX(-50%);
 }
