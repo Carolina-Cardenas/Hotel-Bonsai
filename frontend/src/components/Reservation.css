@@ -1,0 +1,282 @@
+/* BOOKING */
+body.booking-page {
+    background-image: url('../assets/hotel.avif');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.booking-container {
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ebe7e729;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(255, 253, 253, 0.186);
+}
+
+.booking {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.hotel-booking {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hotel {
+    background-color: rgba(32, 30, 30, 0.243);
+    padding: 2.5rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+}
+
+.title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+}
+
+.date-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.date-input {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.label {
+    font-size: 18px;
+    margin-bottom: 1rem;
+}
+
+.input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 18px;
+}
+
+.room-options {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 1rem;
+    padding: 10px;
+}
+
+.option {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    font-size: 10px;
+    align-items: baseline;
+}
+
+.counter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.counter .btn,
+.input--counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    width: 50px;
+    height: 50px;
+    padding: 12px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 100%;
+    transition: background-color 0.3s ease;
+}
+
+
+
+.counter .btn:hover {
+    background-color: #52794e;
+}
+
+.input--counter {
+    text-align: center;
+}
+
+.rate-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.rate {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    align-items: baseline;
+}
+
+.rate-display {
+    font-weight: bold;
+    color: #333;
+}
+
+.btn {
+    background-color: #f6aa1c;
+    border: none;
+    color: #333;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    align-self: center;
+}
+
+/* HOTEL IMAGES */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.grid-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid-item img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.grid-item:hover img {
+    transform: scale(1.1);
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.image-label {
+    position: absolute;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+
+/* Contact Form Styles */
+.contact-form {
+    max-width: 1100px;
+    width: 100%;
+    margin: 8rem auto;
+    padding: 3rem;
+    border-radius: 10px;
+    background-color: rgb(247, 247, 247);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+
+.contact-form .title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.contact-form .contact-details,
+.contact-form .special-requests {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form .contact-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form .label {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.contact-form .input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.contact-form .input:focus {
+    outline: none;
+    border-color: #f6aa1c;
+    box-shadow: 0 0 4px rgba(246, 170, 28, 0.5);
+}
+
+.contact-form .input--textarea {
+    resize: none;
+}
+
+.contact-form .actions {
+    text-align: center;
+}
+
+.contact-form .input::placeholder {
+    color: #aaa;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.contact-form .input:focus::placeholder {
+    color: transparent;
+}
+
+.contact-form .btn {
+    background-color: #f6aa1c;
+    color: #252222;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form .btn--submit:hover {
+    background-color: #e59700;
+}

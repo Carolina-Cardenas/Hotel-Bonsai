@@ -4,9 +4,9 @@ import './components/Home.css';
 import { Header } from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/Home';
+ 
 
-
- const App = () => {
+const App = () => {
   return (
     <div className="home-page">
       <Header />

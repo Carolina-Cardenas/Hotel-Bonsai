@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import "./Reservation.css";
 
 
 interface FormData {
@@ -10,7 +11,7 @@ interface FormData {
   checkOutDate: string;
 }
 
-const BookingForm: React.FC = () => {
+ export const BookingForm: React.FC = () => {
  
   const [formData, setFormData] = useState<FormData>({
     phone: '',
@@ -113,4 +114,4 @@ const BookingForm: React.FC = () => {
   );
 };
 
-export default BookingForm;
+
