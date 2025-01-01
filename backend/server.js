@@ -1,20 +1,34 @@
-const express = require("express");
-const dotenv = require("dotenv");
-const setupMiddleware = require("./middleware");
-const reservationRoutes = require("./routes/reservations");
+import express from "express";
+import mongoose from "mongoose";
+import cors from "cors";
+import bodyParser from "body-parser";
+import dotenv from "dotenv";
+import userRouter from "./src/routes/reservationRouter.js";
 
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 3000;
 
-// Aplicar middlewares
-setupMiddleware(app);
+app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+  })
+);
+app.use(userRouter);
 
-// Configurar rutas
-app.use("/reservations", reservationRoutes);
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((error) => console.log("Error connecting to MongoDB", error));
 
-// Iniciar el servidor
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+app.get("/", (req, res) => {
+  res.send(`Hola, este es tu servidor backend. HELLO Mundo!`);
+});
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`Servidor en ejecución en http://localhost:${PORT}`);
 });

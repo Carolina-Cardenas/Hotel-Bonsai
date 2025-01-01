@@ -3,7 +3,7 @@ const pool = require("../db"); // Importar la conexión a la base de datos
 
 const router = express.Router();
 
-router.post("/", async (req, res) => {
+router.post("/reservation", async (req, res) => {
   const { phone, guests, specialRequests, checkInDate, checkOutDate } =
     req.body;
 
@@ -22,6 +22,16 @@ router.post("/", async (req, res) => {
       message: "Reservation created successfully",
       data: result.rows[0],
     });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+router.get("/reservations", async (req, res) => {
+  try {
+    const result = await pool.query("SELECT * FROM reservations");
+    res.json(result.rows);
   } catch (err) {
     console.error(err.message);
     res.status(500).json({ error: "Internal server error" });
