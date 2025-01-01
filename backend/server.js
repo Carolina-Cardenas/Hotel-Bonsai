@@ -3,7 +3,8 @@ import mongoose from "mongoose";
 import cors from "cors";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
-import userRouter from "./src/routes/reservationRouter.js";
+import reservationRouter from "./src/routes/reservationRouter.js";
+import roomRouter from "./src/routes/roomRouter.js";
 
 dotenv.config();
 
@@ -16,7 +17,8 @@ app.use(
     origin: "http://localhost:5173",
   })
 );
-app.use(userRouter);
+app.use(reservationRouter);
+app.use(roomRouter);
 
 mongoose
   .connect(process.env.MONGO_URI)

@@ -9,8 +9,18 @@ export const getAllReservations = async (req, res) => {
   }
 };
 
-//crear nuevo usuario
-// app.post("/reservation",
+export const getReservation = async (req, res) => {
+  try {
+    const reservation = await Reservation.findById(req.params.id);
+    if (!reservation) {
+      return res.status(404).json({ error: "Reservation not found" });
+    }
+    res.json(reservation);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 export const saveReservation = async (req, res) => {
   console.log("Datos recibidos:", req.body);
   try {
@@ -24,9 +34,13 @@ export const saveReservation = async (req, res) => {
 
 export const updateReservation = async (req, res) => {
   try {
-    const updatedReservation = await Reservation.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
+    const updatedReservation = await Reservation.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {
+        new: true,
+      }
+    );
     if (!updatedReservation) {
       return res.status(404).json({ error: "Reservation not found" });
     }
@@ -38,7 +52,9 @@ export const updateReservation = async (req, res) => {
 
 export const deleteReservation = async (req, res) => {
   try {
-    const deletedReservation = await Reservation.findByIdAndDelete(req.params.id);
+    const deletedReservation = await Reservation.findByIdAndDelete(
+      req.params.id
+    );
     if (!deletedReservation) {
       return res.status(404).json({ error: "Reservation not found" });
     }
