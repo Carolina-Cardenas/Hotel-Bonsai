@@ -42,8 +42,8 @@ export const Reservation: React.FC = () => {
     const fetchRooms = async () => {
       try {
         const response = await axios.get('/rooms');
-        console.log(response.data);// Cambia según tu ruta real
-        setRooms(response.data); // Suponiendo que `response.data` es un array de habitaciones
+        console.log(response.data);
+        setRooms(response.data); 
       } catch (error) {
         console.error('Error fetching rooms:', error);
         setErrorMessage('Error fetching rooms. Please try again later.');
@@ -56,7 +56,7 @@ export const Reservation: React.FC = () => {
     const { value } = event.target;
     setFormData((prevFormData) => ({
       ...prevFormData,
-      roomNumber: Number(value), // Convertir a número porque roomNumber es numérico
+      roomNumber: Number(value), 
     }));
   };
     const handleSubmit = (event: React.FormEvent) => {
@@ -64,15 +64,28 @@ export const Reservation: React.FC = () => {
 
 
 
-      axios.post('/api/reservations', formData)
+      axios.post('/reservations', formData)
         .then(() => {
           setSuccessMessage('Reservation successfully made.');
           setErrorMessage('');
+
+          setFormData({
+            firstName: '',
+            lastName: '',
+            email: '',
+            roomNumber: 0,
+            phone: '',
+            guests: 1,
+            specialRequests: '',
+            checkInDate: '',
+            checkOutDate: ''
+          });
         })
         .catch(() => {
           setErrorMessage('There was an error processing the reservation.');
           setSuccessMessage('');
         });
+        
     };
 
  
