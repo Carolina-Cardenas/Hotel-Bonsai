@@ -3,6 +3,7 @@ import axios from '../axiosConfig';
 import "./Reservation.css";
 
 
+
 interface FormData {
   firstName: string;
   lastName: string;
@@ -35,7 +36,7 @@ export const Reservation: React.FC = () => {
 
   const [successMessage, setSuccessMessage] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string>('');
-  const [selectedRoom, setSelectedRoom] = useState<number | string>("");
+
   const [rooms, setRooms] = useState<Room[]>([]);
   useEffect(() => {
     const fetchRooms = async () => {
@@ -85,118 +86,134 @@ export const Reservation: React.FC = () => {
     };
 
     return (
-      <div>
-        {/* Display success or error messages */}
-        {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
-        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+    <div className="booking-page">
+      {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
+      {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
 
-        {/* Reservation form */}
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>First Name</label>
-            <input
-              type="text"
-              name="firstName"
-              placeholder='First Name'
-              value={formData.firstName}
-              onChange={handleChange}
-              required
-            />
-    
-            <label>Last Name</label>
-            <input
-              type="text"
-              name="lastName"
-              placeholder='Last Name'
-              value={formData.lastName}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label>Email</label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          
-          </div>
-          <div>
-            <label htmlFor="room-select">Select Room:</label>
-             <select
-            id="room-select"
-            name="roomNumber"
-            value={formData.roomNumber}
-            onChange={handleSelectChange}
-            required
-          >
-            <option value="" disabled>
-              -- Choose a Room Type --
-            </option>
-            {rooms.map((room) => (
-              <option key={room.id} value={room.roomNumber}>
-                {room.type} (Room {room.roomNumber})
-              </option>
-            ))}
-          </select>
+      <div className="booking-container">
+        <form onSubmit={handleSubmit} className="contact-form">
+          <div className="hotel">
+            <h2 className="title">Book Your Stay</h2>
             
-          </div>
-          <div>
-            
-            <label>Phone</label>
-            <input
-              type="text"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label>Guests</label>
-            <input
-              type="number"
-              name="guests"
-              value={formData.guests}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label>Special Requests</label>
-            <textarea
-              name="specialRequests"
-              value={formData.specialRequests}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label>Check-In Date</label>
-            <input
-              type="date"
-              name="checkInDate"
-              value={formData.checkInDate}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label>Check-Out Date</label>
-            <input
-              type="date"
-              name="checkOutDate"
-              value={formData.checkOutDate}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <button type="submit">Reserve</button>
+            <div className="contact-details">
+              <div className="contact-input">
+                <label className="label">First Name</label>
+                <input
+                  type="text"
+                  name="firstName"
+                  placeholder="First Name"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  className="input"
+                  required
+                />
+              </div>
+              <div className="contact-input">
+                <label className="label">Last Name</label>
+                <input
+                  type="text"
+                  name="lastName"
+                  placeholder="Last Name"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  className="input"
+                  required
+                />
+              </div>
+              <div className="contact-input">
+                <label className="label">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="input"
+                  required
+                />
+              </div>
+              <div className="contact-input">
+                <label className="label" htmlFor="room-select">Select Room:</label>
+                <select
+                  id="room-select"
+                  name="roomNumber"
+                  value={formData.roomNumber}
+                  onChange={handleSelectChange}
+                  className="input"
+                  required
+                >
+                  <option value="" disabled>-- Choose a Room Type --</option>
+                  {rooms.map((room) => (
+                    <option key={room.id} value={room.roomNumber}>
+                      {room.type} (Room {room.roomNumber})
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="contact-input">
+                <label className="label">Phone</label>
+                <input
+                  type="text"
+                  name="phone"
+                  placeholder="Phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="input"
+                  required
+                />
+              </div>
+              <div className="contact-input">
+                <label className="label">Guests</label>
+                <input
+                  type="number"
+                  name="guests"
+                  placeholder="Number of Guests"
+                  value={formData.guests}
+                  onChange={handleChange}
+                  className="input"
+                  required
+                />
+              </div>
+              <div className="contact-input">
+                <label className="label">Special Requests</label>
+                <textarea
+                  name="specialRequests"
+                  value={formData.specialRequests}
+                  onChange={handleChange}
+                  className="input input--textarea"
+                />
+              </div>
+              <div className="date-inputs">
+                <div className="date-input">
+                  <label className="label">Check-In Date</label>
+                  <input
+                    type="date"
+                    name="checkInDate"
+                    value={formData.checkInDate}
+                    onChange={handleChange}
+                    className="input"
+                    required
+                  />
+                </div>
+                <div className="date-input">
+                  <label className="label">Check-Out Date</label>
+                  <input
+                    type="date"
+                    name="checkOutDate"
+                    value={formData.checkOutDate}
+                    onChange={handleChange}
+                    className="input"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="actions">
+              <button type="submit" className="btn btn--submit">Reserve</button>
+            </div>
           </div>
         </form>
       </div>
-    );
-  };
+    </div>
+  );
+};
