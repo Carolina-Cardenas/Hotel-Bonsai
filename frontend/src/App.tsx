@@ -8,6 +8,7 @@ import  Home from './components/Home';
 
 
 import { Reservation } from './components/Reservation'; 
+import  ListReservation from './components/ListReservation';
 
 const App = () => {
   return (
@@ -18,6 +19,8 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/reservation" element={<Reservation />} />
+          
+        <Route path="/ListReservation" element={<ListReservation />} />
         </Routes>
         <Footer />
       </Router>

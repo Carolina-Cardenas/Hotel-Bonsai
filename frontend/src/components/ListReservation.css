@@ -1,0 +1,53 @@
+body {
+    background-image: url('../assets/hotel.avif');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.reservation-list-container {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+
+}
+
+.reservation-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.reservation-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.reservation-item h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.reservation-item p {
+    margin: 5px 0;
+    font-size: 1em;
+    color: #555;
+}
+
+.reservation-item p strong {
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 1.5em;
+    color: #333;
+}
+
+p {
+    color: #333;
+}

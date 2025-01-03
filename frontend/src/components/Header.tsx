@@ -32,19 +32,19 @@ export const Header = () => {
         </nav>
       </header>
 
-      {/* Menú lateral */}
+     
       <nav
         className={`side-menu ${menuOpen ? "open" : ""}`}
         aria-hidden={!menuOpen}
       >
         <ul>
           <li><a href="/home">Home</a></li>
-          <li><a href="/hotel">Our Hotel</a></li>
-          <li><a href="/reservation">Reservation</a></li>
+          <li><a href="/reservation">Make Reservation</a></li>
+          <li><a href="/ListReservation">List Reservation</a></li>
         </ul>
       </nav>
 
-      {/* Overlay */}
+ 
       {menuOpen && <div className="overlay" onClick={toggleMenu}></div>}
           </>
   )
