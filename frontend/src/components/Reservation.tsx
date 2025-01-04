@@ -1,28 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../axiosConfig';
 import "./Reservation.css";
+import { Reservation as ReservationType } from '../Types'; 
 
-
-
-interface FormData {
-  firstName: string;
-  lastName: string;
-  email: string;
-  roomNumber: number;
-  phone: string;
-  guests: number;
-  specialRequests: string;
-  checkInDate: string;
-  checkOutDate: string;
-}
 interface Room {
   id: string; 
   roomNumber: number;
   type: string;
 }
-export const Reservation: React.FC = () => {
- 
-  const [formData, setFormData] = useState<FormData>({
+interface ReservationProps {
+  selectedReservation: ReservationType | null; 
+}
+export const Reservation: React.FC<ReservationProps> = ({selectedReservation}) => {
+   console.log("Reservation.tsx", selectedReservation);
+  const [formData, setFormData] = useState<ReservationType>({
+    _id: '',
     firstName: '',
     lastName: '',
     email: '',
@@ -36,8 +28,16 @@ export const Reservation: React.FC = () => {
 
   const [successMessage, setSuccessMessage] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string>('');
-
   const [rooms, setRooms] = useState<Room[]>([]);
+
+  useEffect(() => {
+    console.log("Reservation.tsx", selectedReservation);
+    if (selectedReservation) {
+      setFormData(selectedReservation);
+    }
+  }, [selectedReservation]);
+
+
   useEffect(() => {
     const fetchRooms = async () => {
       try {
@@ -59,34 +59,22 @@ export const Reservation: React.FC = () => {
       roomNumber: Number(value), 
     }));
   };
-    const handleSubmit = (event: React.FormEvent) => {
+    const handleSubmit = async (event: React.FormEvent) => {
       event.preventDefault();
-
-
-
-      axios.post('/reservations', formData)
-        .then(() => {
-          setSuccessMessage('Reservation successfully made.');
-          setErrorMessage('');
-
-          setFormData({
-            firstName: '',
-            lastName: '',
-            email: '',
-            roomNumber: 0,
-            phone: '',
-            guests: 1,
-            specialRequests: '',
-            checkInDate: '',
-            checkOutDate: ''
-          });
-        })
-        .catch(() => {
+       try {
+      if (formData._id) {
+        await axios.put(`/reservations/${formData._id}`, formData); 
+        setSuccessMessage('Reservation successfully updated.');
+      } else {
+        await axios.post('/reservations', formData); 
+       setSuccessMessage('Reservation successfully made.');
+      }
+       setErrorMessage('');   
+    } catch (error) {
+         console.error('Error saving reservation:', error);
           setErrorMessage('There was an error processing the reservation.');
-          setSuccessMessage('');
-        });
-        
-    };
+         setSuccessMessage('');
+    }};
 
  
     const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
