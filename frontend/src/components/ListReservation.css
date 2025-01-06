@@ -51,3 +51,86 @@ h2 {
 p {
     color: #333;
 }
+
+/* Contenedor general */
+.reservation-list-container {
+    padding: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+/* Lista de reservaciones */
+.reservation-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Elementos individuales de la lista */
+.reservation-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* Alinear al inicio */
+    padding: 1rem;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Efecto hover para las reservaciones */
+.reservation-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Información dentro de la reservación */
+.reservation-item h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.reservation-item p {
+    margin: 0.5rem 0;
+    /* Separación entre las líneas */
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Botón de eliminación */
+.delete-button {
+    align-self: flex-end;
+    /* Mover el botón al final a la derecha */
+    background-color: transparent;
+    border: none;
+    color: red;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.delete-button:hover {
+    transform: scale(1.2);
+    color: darkred;
+}
+
+/* Texto del mensaje de error */
+.reservation-list-container p {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #555;
+    text-align: center;
+}
+
+/* Título */
+h2 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+}

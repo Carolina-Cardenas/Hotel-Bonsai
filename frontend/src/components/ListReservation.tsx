@@ -27,28 +27,43 @@ const ListReservation: React.FC<ListReservationProps> = ({onSelectReservation}) 
     fetchReservations();
   }, []); 
     
-
+  const handleDelete = async (reservationId: string) => {
+    try {
+      await axios.delete(`/reservations/${reservationId}`);
+      setReservations((prev) => prev.filter((res) => res._id !== reservationId)); // Actualizar lista
+    } catch (error) {
+      console.error('Error deleting reservation:', error);
+      setErrorMessage('Error deleting the reservation. Please try again.');
+    }
+  };
 
   return (
     <div className="reservation-list-container">
       <h2>Reservations List</h2>
-
       {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-
-    
       {reservations.length > 0 ? (
         <ul className="reservation-list">
-                  {reservations.map((reservation) => (
+             {reservations.map((reservation) => (
               <li key={reservation._id}
                 className="reservation-item"
-              // onClick={() =>  onSelectReservation(reservation)}>
-               onClick={() => onSelectReservation(reservation)} // Manejar clic en el elemento <li>
+            
+              onClick={() => onSelectReservation(reservation)}
               style={{ cursor: 'pointer' }} >
               <h3>{reservation.firstName} {reservation.lastName}</h3>
               <p>Email: {reservation.email}</p>
               <p>Room Number: {reservation.roomNumber}</p>
               <p>Check-In Date: {reservation.checkInDate}</p>
               <p>Check-Out Date: {reservation.checkOutDate}</p>
+              <button
+                className="delete-button"
+                 onClick={() => reservation._id && handleDelete(reservation._id)}
+                title="Delete reservation"
+              >
+                🗑️
+              </button>
+                     
+
+
             </li>
           ))}
         </ul>
