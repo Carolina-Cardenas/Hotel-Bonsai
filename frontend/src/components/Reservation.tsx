@@ -30,34 +30,17 @@ export const Reservation: React.FC<ReservationProps> = ({selectedReservation}) =
     ...initialFormData,
     _id: '',
       });
-    // firstName: '',
-    // lastName: '',
-    // email: '',
-    // roomNumber: 0,
-    // phone: '',
-    // guests: 1,
-    // specialRequests: '',
-    // checkInDate: '',
-    // checkOutDate: ''
-
-
   const [successMessage, setSuccessMessage] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [rooms, setRooms] = useState<Room[]>([]);
 
-  // useEffect(() => {
-  //   console.log("Reservation.tsx", selectedReservation);
-  //   if (selectedReservation) {
-  //     setFormData(selectedReservation);
-  //   }
-  // }, [selectedReservation]);
-   useEffect(() => {
+  useEffect(() => {
     if (selectedReservation) {
       setFormData(selectedReservation);
     } else {
       setFormData({
         ...initialFormData,
-        _id: '', // Limpia el campo `_id` si no hay reserva seleccionada
+        _id: '', 
       });
     }
   }, [selectedReservation]);
@@ -87,13 +70,23 @@ export const Reservation: React.FC<ReservationProps> = ({selectedReservation}) =
       roomNumber: Number(value), 
     }));
   };
-    const handleSubmit = async (event: React.FormEvent) => {
+   
+  
+  const handleSubmit = async (event: React.FormEvent) => {
       event.preventDefault();
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const { _id, ...dataToSubmit } = formData;
+    const { _id, ...dataToSubmit } = formData;
+      
+  const formattedData = {
+    ...dataToSubmit,
+    checkInDate: dataToSubmit.checkInDate.split('T')[0],
+    checkOutDate: dataToSubmit.checkOutDate.split('T')[0]
+  };
+
+
        try {
       if (formData._id) {
-        await axios.put(`/reservations/${formData._id}`, formData); 
+        await axios.put(`/reservations/${formData._id}`, formattedData); 
         setSuccessMessage('Reservation successfully updated.');
       } else {
         console.log("Reservation.tsx", formData);
@@ -101,6 +94,7 @@ export const Reservation: React.FC<ReservationProps> = ({selectedReservation}) =
         setSuccessMessage('Reservation successfully made.');
         setErrorMessage('');
           setFormData({
+       
         _id: undefined,
         firstName: '',
         lastName: '',
@@ -112,7 +106,9 @@ export const Reservation: React.FC<ReservationProps> = ({selectedReservation}) =
         checkInDate: '',
         checkOutDate: ''
       });
-    })
+     })
+          
+          
     .catch(() => {
       setErrorMessage('There was an error processing the reservation.');
       setSuccessMessage('');
@@ -130,8 +126,8 @@ export const Reservation: React.FC<ReservationProps> = ({selectedReservation}) =
       const { name, value } = event.target;
       setFormData((prevFormData) => ({
         ...prevFormData,
-        [name]: name === "roomNumber" ? Number(value) : value, 
- 
+        // [name]: name === "roomNumber" ? Number(value) : value, 
+        [name]: value 
       }));
     };
 
@@ -234,43 +230,40 @@ export const Reservation: React.FC<ReservationProps> = ({selectedReservation}) =
                 />
               </div>
             <div className="date-inputs">
-  <div className="date-input">
-    <label className="label">Check-In Date</label>
-    <input
-      type="date"
-      name="checkInDate"
-      value={formData.checkInDate.split('T')[0]} // Divide por 'T' y usa solo la primera parte
-      onChange={(e) => {
-        const dateValue = e.target.value; // Obtén el valor de fecha en formato YYYY-MM-DD
-        setFormData((prevFormData) => ({
+            <div className="date-input">
+           <label className="label">Check-In Date</label>
+           <input
+           type="date"
+           name="checkInDate"
+           value={formData.checkInDate.split('T')[0]} 
+           onChange={(e) => {
+           const dateValue = e.target.value;
+           setFormData((prevFormData) => ({
           ...prevFormData,
-          checkInDate: dateValue, // Guarda solo la fecha en el estado
+          checkInDate: dateValue, 
         }));
       }}
       className="input"
       required
     />
-  </div>
-  <div className="date-input">
-    <label className="label">Check-Out Date</label>
-    <input
-      type="date"
-      name="checkOutDate"
-      value={formData.checkOutDate.split('T')[0]} // Divide por 'T' y usa solo la primera parte
-      onChange={(e) => {
-        const dateValue = e.target.value; // Obtén el valor de fecha en formato YYYY-MM-DD
-        setFormData((prevFormData) => ({
-          ...prevFormData,
-          checkOutDate: dateValue, // Guarda solo la fecha en el estado
-        }));
-      }}
-      className="input"
-      required
-    />
-  </div>
-
-
-
+         </div>
+          <div className="date-input">
+           <label className="label">Check-Out Date</label>
+            <input
+              type="date"
+              name="checkOutDate"
+              value={formData.checkOutDate.split('T')[0]} 
+              onChange={(e) => {
+                     const dateValue = e.target.value; 
+                     setFormData((prevFormData) => ({
+                     ...prevFormData,
+                     checkOutDate: dateValue, 
+                      }));
+                      }}
+                     className="input"
+                     required
+                    />
+               </div>
               </div>
             </div>
             <div className="actions">
