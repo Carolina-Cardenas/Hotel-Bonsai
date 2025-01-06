@@ -5,6 +5,7 @@ import { Reservation as ReservationType } from '../Types';
 
 interface ListReservationProps {
   onSelectReservation: (reservation: ReservationType) => void;
+  onDeleteReservation: (reservationId: string) => void;
 }
 
 const ListReservation: React.FC<ListReservationProps> = ({onSelectReservation}) => {   
@@ -27,10 +28,11 @@ const ListReservation: React.FC<ListReservationProps> = ({onSelectReservation}) 
     fetchReservations();
   }, []); 
     
-  const handleDelete = async (reservationId: string) => {
+   const handleDelete = async (reservationId: string, event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
     try {
       await axios.delete(`/reservations/${reservationId}`);
-      setReservations((prev) => prev.filter((res) => res._id !== reservationId)); // Actualizar lista
+      setReservations((prev) => prev.filter((res) => res._id !== reservationId));
     } catch (error) {
       console.error('Error deleting reservation:', error);
       setErrorMessage('Error deleting the reservation. Please try again.');
@@ -56,14 +58,11 @@ const ListReservation: React.FC<ListReservationProps> = ({onSelectReservation}) 
               <p>Check-Out Date: {reservation.checkOutDate}</p>
               <button
                 className="delete-button"
-                 onClick={() => reservation._id && handleDelete(reservation._id)}
+                 onClick={(event) => reservation._id && handleDelete(reservation._id, event)}
                 title="Delete reservation"
               >
                 🗑️
-              </button>
-                     
-
-
+              </button>    
             </li>
           ))}
         </ul>

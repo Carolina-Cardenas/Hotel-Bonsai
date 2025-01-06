@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 
-// Definición del esquema de Mongoose
 const ReservationSchema = new mongoose.Schema({
   firstName: {
     type: String,
@@ -53,7 +52,6 @@ const ReservationSchema = new mongoose.Schema({
   },
 });
 
-// Creación del modelo con el esquema definido
 const Reservation = mongoose.model("Reservation", ReservationSchema);
 
 export default Reservation;
