@@ -5,6 +5,7 @@ import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import reservationRouter from "./src/routes/reservationRouter.js";
 import roomRouter from "./src/routes/roomRouter.js";
+import swaggerSetup from "./src/swagger.js";
 
 dotenv.config();
 
@@ -19,6 +20,8 @@ app.use(
 );
 app.use(reservationRouter);
 app.use(roomRouter);
+
+swaggerSetup(app);
 
 mongoose
   .connect(process.env.MONGO_URI)
