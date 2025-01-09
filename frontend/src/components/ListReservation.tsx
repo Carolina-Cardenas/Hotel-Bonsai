@@ -33,6 +33,7 @@ const ListReservation: React.FC<ListReservationProps> = ({onSelectReservation}) 
     try {
       await axios.delete(`/reservations/${reservationId}`);
       setReservations((prev) => prev.filter((res) => res._id !== reservationId));
+    
     } catch (error) {
       console.error('Error deleting reservation:', error);
       setErrorMessage('Error deleting the reservation. Please try again.');

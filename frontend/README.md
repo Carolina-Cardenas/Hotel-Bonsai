@@ -1,50 +1,86 @@
-# React + TypeScript + Vite
+# Hotel Bonsai Reservation System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This project is a reservation system for a hotel called Hotel Bonsai that includes both frontend and backend components. The application allows users to make room reservations and view a list of all existing reservations. The project is developed in TypeScript using React for the frontend and Node.js with Mongoose for the backend.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## Technical Specifications
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Language:** TypeScript
+- **Frontend:** React
+ - Principal Components: `Reservation` and `ListReservation`
+- **Backend:** Node.js with Mongoose
+ - Principal Components: `controllers`, `routes`, `middleware`, `swagger`, `models`, `db.js`, `.env`
+- **Database:** MongoDB
+- **API Documentation:** Swagger
 
-- Configure the top-level `parserOptions` property like this:
+## Project Structure
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Setup Instructions
+
+### Backend
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd hotel-bonsai-reservation-system/backend
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+2. Install the dependencies:
+```bash
+npm install
 ```
+
+3. Create a `.env` file in the `backend` directory and set the necessary environment variables (you can use `.env.example` as a reference).
+
+4. Start the server:
+```bash
+npm start
+```
+
+### Frontend
+1. From the root directory of the project, navigate to the `frontend` directory:
+```bash
+cd ../frontend
+```
+
+2. Install the dependencies:
+```bash
+npm install
+```
+
+3. Start the React application:
+```bash
+npm start
+```
+
+## Usage
+
+### Room Reservations
+- Users can make room reservations by filling out the reservation form in the `Reservation` component.
+- Reservations can be viewed in the reservation list provided by the `ListReservation` component.
+
+### View and Delete Reservations
+- Existing reservations can be viewed in the reservation list.
+- Users can delete reservations using the delete button provided next to each reservation in the list.
+
+## API Documentation
+
+The API documentation can be found in the `/api-docs` path of the backend server. This documentation is generated using Swagger.
+
+
+## Team Roles
+
+- **Product Owner:** Carolina Cardenas
+- **Scrum Master:** Carolina Cardenas
+- **Development Team Members:** Carolina Cardenas
+
+## Scrum Process
+
+### Project Planning
+- **Application Concept:** Hotel reservation system.
+- **Initial Backlog:** Creation of frontend and backend components, database configuration, API documentation.
+
+### Sprint Management
+- **Tasks:** Divided into specific tasks for each sprint.
+

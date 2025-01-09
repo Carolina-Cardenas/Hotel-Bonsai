@@ -5,7 +5,6 @@ const Home: React.FC = () => {
  
   return (
     <>
-      {/* Contenido principal */}
       <main>
         <section className="home">
           <article className="home__content">
@@ -17,5 +16,4 @@ const Home: React.FC = () => {
     </>
   );
 };
-
 export default Home;

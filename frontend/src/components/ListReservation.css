@@ -4,6 +4,7 @@ body {
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
+    flex: 1
 }
 
 

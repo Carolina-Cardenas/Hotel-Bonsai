@@ -1,66 +1,81 @@
-/* body {
-    margin: 0;
-}
+ body {
+     margin: 0;
+     flex: 1;
 
-body.home-page {
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-} */
+ }
 
-/* HOME */
-.home {
-    width: 100%;
-}
+ .home-page {
+     display: flex;
+     flex-direction: column;
+     min-height: 100vh;
 
-main {
-    /* height: 100vh; */
-    scroll-behavior: smooth;
-    overflow-x: hidden;
-    background-image: url('/src/assets/08-night.avif');
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+ }
 
-.home__content {
-    position: relative;
-    display: flex;
-    align-items: center;
-    background-repeat: no-repeat;
-    justify-content: space-between;
+ .routes {
+     flex-grow: 1;
+ }
 
-}
 
-.home__hotel {
-    font-size: 3em;
-    color: white;
-    padding-left: 3rem;
-    font-family: 'Poppins', sans-serif;
-    justify-content: center;
-    text-align: center;
-}
+ .home {
+     width: 100%;
 
-.home__btn {
-    position: relative;
-    margin-top: 40rem;
-    justify-content: center;
-    align-items: center;
-    bottom: 6rem;
-    right: 6rem;
-    background-color: #C9A227;
-    color: #fff;
-    padding: 0.7rem 1.3rem;
-    font-size: 1em;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 0.9rem;
-    box-shadow: 0 0.3rem 0.4rem rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
-    z-index: 1000;
+ }
 
-}
+ .home-container {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     padding: 20px;
+ }
 
-.home__btn:hover {
-    background-color: #e76f51;
-}
+ main {
+     height: 100vh;
+     scroll-behavior: smooth;
+     overflow-x: hidden;
+     background-image: url('/src/assets/08-night.avif');
+     background-repeat: no-repeat;
+     background-size: cover;
+ }
+
+ .home__content {
+     position: relative;
+     display: flex;
+     align-items: center;
+     background-repeat: no-repeat;
+     justify-content: space-between;
+
+ }
+
+ .home__hotel {
+     font-size: 3em;
+     color: white;
+     padding-left: 3rem;
+     font-family: 'Poppins', sans-serif;
+     justify-content: center;
+     text-align: center;
+ }
+
+ .home__btn {
+     position: relative;
+     margin-top: 40rem;
+     justify-content: center;
+     align-items: center;
+     bottom: 6rem;
+     right: 6rem;
+     background-color: #C9A227;
+     color: #fff;
+     padding: 0.7rem 1.3rem;
+     font-size: 1em;
+     font-weight: bold;
+     text-decoration: none;
+     border-radius: 0.9rem;
+     box-shadow: 0 0.3rem 0.4rem rgba(0, 0, 0, 0.1);
+     transition: background-color 0.3s ease;
+     z-index: 1000;
+
+ }
+
+ .home__btn:hover {
+     background-color: #e76f51;
+ }

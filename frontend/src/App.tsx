@@ -6,34 +6,42 @@ import { Header } from './components/Header';
 import Footer from './components/Footer';
 import  Home from './components/Home';
 import { Reservation as ReservationType } from './Types';
-
-
 import { Reservation } from './components/Reservation'; 
 import  ListReservation from './components/ListReservation';
 
 const App = () => {
  const [selectedReservation, setSelectedReservation] = useState<ReservationType | null>(null);
  const navigate = useNavigate();
-  // Manejar la selección de reservaciones
+ 
   const handleSelectReservation = (reservation: ReservationType) => {
    console.log("App.tsx" ,reservation);
     setSelectedReservation(reservation); 
    navigate('/reservation');
   };
+  const onDeleteReservation = (reservationId: string) => {
+    console.log("Reserva eliminada con ID:", reservationId);
+
+  };
 
   return (
     <div className="home-page"> 
-      <Header />
+    <Header />
+       <div className="routes">
        <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route
             path="/reservation"
-            element={<Reservation selectedReservation={selectedReservation} />} />
+            element={<Reservation selectedReservation={selectedReservation}
+             />} />
           <Route
             path="/ListReservation"
-            element={<ListReservation onSelectReservation={handleSelectReservation} />} />
+            element={<ListReservation 
+              onSelectReservation={handleSelectReservation}
+              onDeleteReservation={onDeleteReservation} 
+            />} />
         </Routes>
+        </div>
         <Footer />
     </div>
   ); 
